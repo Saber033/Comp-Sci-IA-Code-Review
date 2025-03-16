@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginModule>
+  <EffectPlugin Name="Render-in-Place" CompanyID="64" PluginID="8339">
+    <PluginInfo>
+      <PlatformSupport>
+        <Platform Name="Any">
+          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
+          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
+          <CanBeRendered>true</CanBeRendered>
+        </Platform>
+      </PlatformSupport>
+    </PluginInfo>
+    <Properties>
+      <!-- Add your property definitions here -->
+      <Property Name="AuthoringFilename" Type="string" DisplayName="Authoring Filename">
+        <DefaultValue>AKRecorder-%s.wav</DefaultValue>
+        <AudioEnginePropertyID>0</AudioEnginePropertyID>
+      </Property>
+    </Properties>
+  </EffectPlugin>
+</PluginModule>
