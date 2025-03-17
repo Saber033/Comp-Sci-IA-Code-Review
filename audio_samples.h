@@ -2,6 +2,8 @@
 
 struct AkChannelConfig;
 
+// $$from-petekug$$: I would mention that it is pre-fixed with "__declspec(dllexport)" so that it can be accessed from your unit tests
+// $$from-petekug$$: it's also worth adding a description of this class. something like how it is a class that contains information from loaded wav data, either from wwise or a file. Allows for multiple wav files or data to be loaded and it will combine them into a single wav file when write_samples is called
 class __declspec(dllexport) audio_samples
 {
 public:
@@ -40,6 +42,7 @@ public:
 	unsigned int get_duration_seconds() const;
 
 private:
+// $$from-petekug$$: comment needed, something like, by removing the padding the compiler adds to the data, we can read and write to the binary wav format directly with less code
 #pragma pack(push, 1) 
 	struct wav_riff_header
 	{
