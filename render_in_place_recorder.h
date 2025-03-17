@@ -1,5 +1,6 @@
 #include "audio_samples.h"
 
+// $$from-petekug$$: you could mention something here about using forward declarations to keep the build times down
 struct AkChannelConfig;
 
 namespace AK
@@ -22,7 +23,7 @@ public:
 	bool write_to_disk();
 
 private:
-	audio_samples m_audio_samples;
-	const char* m_stream_file_path;
-	unsigned int m_sample_rate;
+	audio_samples m_audio_samples;  // $$from-petekug$$: your utility class for capturing the samples from wwise and creating a file from the combined data 
+	const char* m_stream_file_path; // $$from-petekug$$: the name of the file you are creating with the combined data being recorded
+	unsigned int m_sample_rate; // $$from-petekug$$: the rate at which the captured samples will be written to the file
 };
