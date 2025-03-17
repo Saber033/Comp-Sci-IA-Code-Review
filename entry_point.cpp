@@ -8,6 +8,7 @@ static bool test_db_to_linear_conversion();
 static bool test_apply_gain();
 static bool test_wave_loader();
 
+// $$from-petekug$$: just a small comment for this would be helpful, something like, this is the entry point for where the unit tests are run from to validate that the core parts of the library work
 int main(void)
 {
 	bool result= true;
@@ -31,6 +32,8 @@ int main(void)
 
 static bool evaluate_test_result(bool succeeded, const char* test_case)
 {
+	// $$from-petekug$$: this comment can be put on top of the function
+	// $$from-petekug$$: it's not really a test, this is actually a helper function used to print the status of the test along with a name for it
 	//takes in a function and a string to determine if the test passed or not
 	if (succeeded)
 	{
@@ -48,6 +51,7 @@ static bool test_db_to_linear_conversion()
 {
 	bool result= true;
 
+	// $$from-petekug$$: this comment can be put on top of the function
 	//tests the decibel to linear units conversion with a series of test cases
 	result &= evaluate_test_result((db_to_linear_units(0.0f) == 1.0f), "Test for 0 dB (should be 1 in linear units)");
 	result &= evaluate_test_result((db_to_linear_units(20.0f) == 10.0f), "Test for 20 dB (should be 10 in linear units)");
@@ -57,6 +61,7 @@ static bool test_db_to_linear_conversion()
 	return result;
 }
 
+// $$from-petekug$$: we should rename this test and give the function a comment
 static bool test_apply_gain()
 {
 	bool result= true;
@@ -74,6 +79,7 @@ static bool test_apply_gain()
 	//creates an output buffer
 	short output_buffer[sample_count] = {};
 
+	// $$from-petekug$$: calls the serialize_samples function (we renamed it)
 	//calls the apply gain function
 	serialize_samples(&samples[0], sample_count, 1, &output_buffer[0]);
 
@@ -101,12 +107,17 @@ static bool test_wave_loader()
 	bool result= true;
 
 	audio_samples samples;
+
+	// $$from-petekug$$: I would put this comment at the top of the function instead of inside this code
 	//calls the load samples and write samples on a mock wav file to see if the data is being correctly loaded and written
-	// 
+
+	// $$from-petekug$$: can these tests be brought back? 
 	//samples.load_samples("C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav");
 	//samples.load_samples("C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav");
 
 	const std::vector<const char*> files = {"C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav", "C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav"};
+
+	// $$from-petekug$$: should we check that load_samples and write_samples returns the expected result (true)?
 	samples.load_samples(files);
 
 	samples.write_samples("C:\\Users\\lemur\\Downloads\\new_written_wav_file.wav");
