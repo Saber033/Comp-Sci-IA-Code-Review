@@ -35,9 +35,9 @@ public:
 	AKRESULT TimeSkip(AkUInt32 frames) override;
 
 private:
-	render_in_place_fx_params* m_params;
-	AK::IAkPluginMemAlloc* m_allocator;
-	AK::IAkEffectPluginContext* m_context;
-	AkInt16* m_working_buffer;
-	render_in_place_recorder* m_recorder;
+	render_in_place_fx_params* m_params; // $$from-petekug$$: you can remove this to make the code simpler
+	AK::IAkPluginMemAlloc* m_allocator; // $$from-petekug$$: you can remove this to make the code simpler
+	AK::IAkEffectPluginContext* m_context; // $$from-petekug$$: you can remove this to make the code simpler, we aren't using it 
+	AkInt16* m_working_buffer; // $$from-petekug$$: this buffer contains the data you convert from the wwise format to the format you want to write to the file
+	render_in_place_recorder* m_recorder; // $$from-petekug$$: a quick comment, something like this is the utility for recording the data from wwise, combining it, and saving it to a new wav file
 };
