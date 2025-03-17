@@ -13,6 +13,7 @@
     <Properties>
       <!-- Add your property definitions here -->
       <Property Name="AuthoringFilename" Type="string" DisplayName="Authoring Filename">
+        <!-- $$from-petekug$$: lets give this default value a better default name, maybe RenderInPlaceDefault.wav or something  like that? -->
         <DefaultValue>AKRecorder-%s.wav</DefaultValue>
         <AudioEnginePropertyID>0</AudioEnginePropertyID>
       </Property>
