@@ -56,7 +56,7 @@ AKRESULT render_in_place_fx::Term(AK::IAkPluginMemAlloc* allocator)
 {
 	AKRESULT result = AK_Success;
 
-	//writes the wav files to a new file
+	//writes wav data to a new file
 	if (!m_recorder->write_to_disk())
 	{
 		result = AK_Fail;
@@ -110,7 +110,6 @@ void render_in_place_fx::Execute(AkAudioBuffer* buffer)
 		serialize_samples(samples, buffer->uValidFrames, channel_count, m_working_buffer + i);
 	}
 
-	//
 	//recorder accumulates the wav data, combining it with the wave data it already captured from previous samples
 	m_recorder->record(m_working_buffer, buffer->uValidFrames * sizeof(short) * channel_count, channel_count);
 }
