@@ -1,7 +1,7 @@
 #include <AK/SoundEngine/Common/IAkPlugin.h>
 #include <AK/Plugin/PluginServices/AkFXParameterChangeHandler.h>
 
-//this is the data that can be changed from the tool, just the file name to write the data to in this case
+//this is the data that can be changed from the tool, just the file name
 struct render_in_place_rtpc_params
 {
 	char file_name[AK_MAX_PATH];
@@ -23,20 +23,20 @@ struct render_in_place_fx_params
 
 	~render_in_place_fx_params();
 
-	/// Create a duplicate of the parameter node instance in its current state.
+	//create a duplicate of the parameter node instance in its current state.
 	IAkPluginParam* Clone(AK::IAkPluginMemAlloc* allocator) override;
 
-	/// Initialize the plug-in parameter node interface.
-	/// Initializes the internal parameter structure to default values or with the provided parameter block if it is valid.
+	//initialize the plug-in parameter node interface.
+	//initializes the internal parameter structure to default values or with the provided parameter block if it is valid.
 	AKRESULT Init(AK::IAkPluginMemAlloc* allocator, const void* params_block, AkUInt32 block_size) override;
 
-	/// Called by the sound engine when a parameter node is terminated.
+	//called by the sound engine when a parameter node is terminated.
 	AKRESULT Term(AK::IAkPluginMemAlloc* allocator) override;
 
-	/// Set all plug-in parameters at once using a parameter block.
+	//set all plug-in parameters at once using a parameter block.
 	AKRESULT SetParamsBlock(const void* params_block, AkUInt32 block_size) override;
 
-	/// Update a single parameter at a time and perform the necessary actions on the parameter changes.
+	//update a single parameter at a time and perform the necessary actions on the parameter changes.
 	AKRESULT SetParam(AkPluginParamID param_id, const void* param_value, AkUInt32 param_size) override;
 
 	static const AkUInt32 k_number_of_parameters= 1;
@@ -44,6 +44,6 @@ struct render_in_place_fx_params
 	//used to communicate changes captured from the tool to the render in place plugin classes
 	AK::AkFXParameterChangeHandler<k_number_of_parameters> m_param_change_handler;
 
-	//"real time parameter controls" - values that can be adjusted and updated in the code without reloading the tool
+	//rtpc stands for "real time parameter controls" which are values that can be adjusted and updated in the code without reloading the tool
 	render_in_place_rtpc_params m_rtpc;
 };
