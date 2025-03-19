@@ -123,7 +123,7 @@ bool audio_samples::load_samples(const char *file_path)
 						//creating a pointer to serve as an index into new_samples without incrementing new_samples*
 						float* new_samples_working_buffer = new_samples;
 
-						//reads the data into the buffer
+						//reads the data into the buffer from the file
 						fread(buffer, data_chunk.chunk_size, 1, read_ptr);
 
 						//loops through all audio channels
