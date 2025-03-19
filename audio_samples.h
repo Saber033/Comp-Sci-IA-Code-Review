@@ -1,48 +1,48 @@
 #include <vector>
 
-struct AkChannelConfig;
-
-//pre-fixed with __declspec(dllexport) so it can be accessed from unit tests
+//contains __declspec(dllexport) so it can be accessed from entry point for testing
 //the audio samples class contains information from loaded wav data from Wwise or a file, allows for mulitple wav files or data to be loaded and will combine them into a single wav file when write samples is called
 class __declspec(dllexport) audio_samples
 {
 public:
+	//constructor
 	audio_samples();
 
+	//destructor
 	~audio_samples();
 
-	// loads the audio file, wav format, into a deserialized format
+	//loads the audio file, wav format, into a deserialized format
 	bool load_samples(const char* stream_file_path);
 
-	// loads the audio files, wav format, into a combined deserialized format
+	//loads the audio files, wav format, into a combined deserialized format
 	bool load_samples(const std::vector<const char*>& stream_file_path);
 
-	// loads the audio stream, wwise stream format, into a deserialized format
+	//loads the audio stream, wwise stream format, into a deserialized format
 	bool load_samples(const short* stream, unsigned int sample_count, unsigned int channel_count, unsigned int sample_rate);
 
-	// writes the deserialized format into an output wave file
+	//writes the deserialized format into an output wave file
 	bool write_samples(const char* stream_file_path);
 
-	// returns a sample, given the index into the sample buffer
+	//returns a sample, given the index into the sample buffer
 	float get_sample(unsigned int sample_index) const;
 
-	// returns the number of samples in the audio file
+	//returns the number of samples in the audio file
 	unsigned int get_sample_count() const;
 
-	// returns the sample rate
+	//returns the sample rate
 	unsigned int get_sample_rate() const;
 
-	// returns the bit count per sample
+	//returns the bit count per sample
 	unsigned int get_bits_per_sample() const;
 
-	// returns the number of channels
+	//returns the number of channels
 	unsigned int get_channel_count() const;
 
-	// returns the duration of the samples in seconds
+	//returns the duration of the samples in seconds
 	unsigned int get_duration_seconds() const;
 
 private:
-	//by removing the padding the compiler adds to the data, we can read and write to the binary wav format directly with less code
+	//the binary wav format can be written to directly with less code by removing the padding the compiler adds to the data
 #pragma pack(push, 1) 
 	struct wav_riff_header
 	{
