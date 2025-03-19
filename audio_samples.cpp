@@ -98,10 +98,10 @@ bool audio_samples::load_samples(const char *file_path)
 						//calculates the sample count
 						unsigned int sample_count = data_chunk.chunk_size / ((m_bits_per_sample / 8) * m_channel_count);
 
-						//sets a sample count to the one calculated in case multiple files are being loaded
+						//saving the size of the past data when multiple files are loaded
 						unsigned int current_sample_count = m_sample_count;
 
-						//for combining multiple files
+						//increasing the size to account for the combined data
 						m_sample_count += sample_count;
 
 						//creates a buffer to hold the binary data from the wav file
