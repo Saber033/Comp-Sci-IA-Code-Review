@@ -39,7 +39,7 @@ AKRESULT render_in_place_fx_params::Init(AK::IAkPluginMemAlloc* allocator, const
 	}
 	else
 	{
-		//otherwise, it can be loaded with the data saved from the previous session
+		//else it can be loaded with the data saved from earlier
 		result = SetParamsBlock(params_block, block_size);
 	}
 
@@ -58,7 +58,7 @@ AKRESULT render_in_place_fx_params::SetParamsBlock(const void* params_block, AkU
 {
 	AKRESULT result = AK_Success;
 
-	//casting to an AkUint8*, in otherwords a byte buffer, to deserialize and extract the settings from
+	//casting to an AkUint8* so it can deserialize and extract the settings from the block
 	AkUInt8* local_params_block = (AkUInt8*)params_block;
 
 	//performing a compatibility test
@@ -68,10 +68,8 @@ AKRESULT render_in_place_fx_params::SetParamsBlock(const void* params_block, AkU
 	}
 	else
 	{
-		unsigned char* p_params_block = (unsigned char*)params_block;
-
 		//utility function that does a string copy from bank data to a char array
-		COPYBANKSTRING_CHAR(p_params_block, block_size, m_rtpc.file_name, AK_MAX_PATH);
+		COPYBANKSTRING_CHAR(local_params_block, block_size, m_rtpc.file_name, AK_MAX_PATH);
 
 		//null terminate the strings
 		m_rtpc.file_name[AK_MAX_PATH - 1] = '\0';
