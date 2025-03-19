@@ -106,6 +106,7 @@ static bool test_wave_loader()
 	audio_samples samples;
 
 	result &= evaluate_test_result(samples.load_samples("C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav"), "Testing if the file successfully loads");
+	result &= evaluate_test_result(samples.load_samples("C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav"), "Testing if the same file back to back successfully loads");
 
 	const std::vector<const char*> files = {"C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav", "C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav"};
 	result &= evaluate_test_result(samples.load_samples(files), "Testing if multiple wav files can be loaded");
