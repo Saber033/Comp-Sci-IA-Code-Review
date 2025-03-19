@@ -21,6 +21,7 @@ void deserialize_samples(const short* buffer, int sample_count, int buffer_strid
 	for (int i = 0; i < sample_count; i++)
 	{
 		short sample = *buffer;
+
 		//cast to a float and normalize to the range Wwise expects it in, which is between -1 to 1
 		*out_samples = (float)(sample) / SHRT_MAX;
 
@@ -33,7 +34,7 @@ void deserialize_samples(const short* buffer, int sample_count, int buffer_strid
 }
 
 //float to short conversion 
-//used to take the format used by Wwise to do the mixing and converts it oteh format that is used for a wav file
+//used to take the format used by Wwise to do the mixing and converts it to the format that is used for a wav file
 void serialize_samples(const float* samples, int sample_count, int buffer_stride, short* out_buffer)
 {
 	//loop through the samples
@@ -51,7 +52,7 @@ void serialize_samples(const float* samples, int sample_count, int buffer_stride
 			sample = -1.0f;
 		}
 
-		//conversion to a short and denormalizes it from the range Wwise expects, -1 to 1, to something symmetrical with the min/max range for a short
+		//conversion to a short and denormalizes it from -1/1 to a short max/min
 		*out_buffer = (short)((float)(SHRT_MAX)*sample);
 
 		//stepping through memory to the next location of the sample
