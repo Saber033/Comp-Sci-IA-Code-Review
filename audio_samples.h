@@ -1,9 +1,10 @@
 #include <vector>
 
-//this class creates a wav parser that is based on the wav file format documented on the page below
+//the audio samples class contains information from loaded wav data from Wwise or a file
+//allows for multiple wav files or data to be loaded and will combine them into a single wav file when write samples is called
+//based on the wav file format documented on the page below
 //https://www.mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html
 //contains __declspec(dllexport) so it can be accessed from entry point for testing
-//the audio samples class contains information from loaded wav data from Wwise or a file, allows for mulitple wav files or data to be loaded and will combine them into a single wav file when write samples is called
 class __declspec(dllexport) audio_samples
 {
 public:
