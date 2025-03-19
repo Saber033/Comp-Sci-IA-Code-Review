@@ -1,9 +1,5 @@
 #include "audio_samples.h"
 #include "render_in_place_utilities.h"
-#include <AK/SoundEngine/Common/AkSpeakerConfig.h>
-
-//This class creates a wav parser that is based on the wav file format documented on the page below
-//https://www.mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html
 
 //constructor
 audio_samples::audio_samples() : 
