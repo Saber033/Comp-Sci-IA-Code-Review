@@ -15,7 +15,7 @@ enum e_render_in_place_param_id
 	param_id_count
 };
 
-//updates the parameters in Wwise based on changes made to the soundbank file or through the authoring tool
+//updates the parameters in the plugin based on changes made to the soundbank file or through the authoring tool
 struct render_in_place_fx_params
 	: public AK::IAkPluginParam
 {
