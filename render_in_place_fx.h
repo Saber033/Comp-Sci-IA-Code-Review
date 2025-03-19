@@ -1,6 +1,6 @@
 #include "render_in_place_fx_params.h"
 
-//forward declaration to use the recorder
+//forward declaration to use the recorder which reduces compile time over using #include
 class render_in_place_recorder;
 
 //see https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__plugins__effects.html
