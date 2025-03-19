@@ -11,9 +11,9 @@ public:
 	//destructor
 	~render_in_place_plugin();
 
-	//this function is called by Wwise to obtain parameters that will be written to a bank.
-	//because these can be changed at run-time, the parameter block should stay relatively small.
-	//larger data should be put in the Data Block.
+	//this function is called by Wwise to obtain parameters that will be written to a bank
+	//because these can be changed at run-time, the parameter block should stay relatively small
+	//larger data should be put in the Data Block
 	bool GetBankParameters(const GUID& platform_guid, AK::Wwise::Plugin::DataWriter& data_writer) const override;
 };
 
