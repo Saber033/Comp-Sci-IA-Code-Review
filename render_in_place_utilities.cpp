@@ -14,7 +14,7 @@ float db_to_linear_units(float db_value)
 }
 
 //short to float conversion
-//used to take the format from the wav file and convert into the format used by Wwise for digital signal processing - i.e. for volume adjustment, reverberation, etc.
+//used to take the format from the wav file and convert into the format used by Wwise for mixing
 void deserialize_samples(const short* buffer, int sample_count, int buffer_stride, float* out_samples)
 {
 	//loops through the sample count
