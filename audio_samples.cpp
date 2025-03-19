@@ -117,9 +117,10 @@ bool audio_samples::load_samples(const char *file_path)
 
 						//creates a new object that stores the samples in an array of floats
 						//size is determined by how many samples need to be stored multiplied by the channel count to account for multiple audio channels
+						//stored as floats since that is the type used by Wwise for mixing
 						float* new_samples = new float[m_sample_count * m_channel_count];
 
-						//stored as floats since that is the type used by Wwise
+						//creating a pointer to serve as an index into new_samples without incrementing new_samples*
 						float* new_samples_working_buffer = new_samples;
 
 						//reads the data into the buffer
