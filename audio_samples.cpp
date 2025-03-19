@@ -128,9 +128,8 @@ bool audio_samples::load_samples(const char *stream_file_path)
 						//loops through all audio channels
 						for (unsigned int i = 0; i < m_channel_count; i++)
 						{
-							//copies memory from m_samples to the new samples working buffer
-							//has to account for multiple audio channels so sample count is multiplied by i
-							//samples is added to sample count in case multiple files are loaded and existing data is already being stored
+							//copies memory from m_samples to another samples buffer to hold past data when multiple files are loaded
+							//copies the memory for each channel
 							memcpy(new_samples_working_buffer, m_samples + current_sample_count * i, current_sample_count * sizeof(float));
 							//working buffer is incremented for the next memcpy for the next channel
 							new_samples_working_buffer += current_sample_count;
@@ -216,9 +215,8 @@ bool audio_samples::load_samples(const short* stream, unsigned int sample_count,
 	//loops through the channels
 	for (unsigned int i = 0; i < m_channel_count; i++)
 	{
-		//copies memory from m_samples to the new samples working buffer
-		//has to account for multiple audio channels so sample count is multiplied by i
-		//samples is added to sample count in case multiple files are loaded and existing data is already being stored
+		//copies memory from m_samples to another samples buffer to hold past data when multiple files are loaded
+		//copies the memory for each channel
 		memcpy(new_samples_working_buffer, m_samples + current_sample_count * i, current_sample_count * sizeof(float));
 		new_samples_working_buffer += current_sample_count;
 
