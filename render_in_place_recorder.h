@@ -1,15 +1,10 @@
 #include "audio_samples.h"
 
-struct AkChannelConfig;
-
-namespace AK
-{
-	class IAkPluginMemAlloc;
-}
-
+//utility class that accumulates audio samples and then writes them a wav file
 class render_in_place_recorder
 {
 public:
+	//constructor
 	render_in_place_recorder();
 
 	//loads samples for a specific set of audio samples
