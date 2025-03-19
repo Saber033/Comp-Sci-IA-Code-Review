@@ -4,7 +4,6 @@ class render_in_place_recorder;
 
 //see https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__plugins__effects.html
 //for the documentation about effect plug-ins
-
 class render_in_place_fx
 	: public AK::IAkInPlaceEffectPlugin
 {
@@ -19,7 +18,7 @@ public:
 	//prepares the plug-in for data processing, allocates memory and sets up the initial conditions
 	AKRESULT Init(AK::IAkPluginMemAlloc* allocator, AK::IAkEffectPluginContext* context, AK::IAkPluginParam* params, AkAudioFormat& format) override;
 
-	//release the resources upon termination of the plug-in.
+	//release the resources upon termination of the plug-in
 	AKRESULT Term(AK::IAkPluginMemAlloc* allocator) override;
 
 	//the reset action should perform any actions required to reinitialize the
