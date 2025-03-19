@@ -28,7 +28,7 @@ AKRESULT render_in_place_fx_params::Init(AK::IAkPluginMemAlloc* allocator, const
 {
 	AKRESULT result = AK_Success;
 
-	// $$from-petekug$$: when the block size is 0, this is the first time this plugin has been called on this asset
+	//when the block size is 0, this is the first time this plugin has been called on this asset
 	if (block_size == 0)
 	{
 		m_rtpc.file_name[0] = 0;
@@ -37,7 +37,7 @@ AKRESULT render_in_place_fx_params::Init(AK::IAkPluginMemAlloc* allocator, const
 	}
 	else
 	{
-		// $$from-petekug$$: otherwise, we can load it with the data saved from the previous session
+		//otherwise, we can load it with the data saved from the previous session
 		result = SetParamsBlock(params_block, block_size);
 	}
 
@@ -56,25 +56,22 @@ AKRESULT render_in_place_fx_params::SetParamsBlock(const void* params_block, AkU
 {
 	AKRESULT result = AK_Success;
 
-	// $$from-petekug$$: casting to an AkUint8*, in otherwords a byte buffer, for us to deserialize and extract the settings from
+	//casting to an AkUint8*, in otherwords a byte buffer, to deserialize and extract the settings from
 	AkUInt8* local_params_block = (AkUInt8*)params_block;
 
-	// $$from-petekug$$: first we perform a quick compability test
+	//first we perform a quick compatibility test
 	if (READBANKDATA(AkUInt16, local_params_block, block_size) != render_in_place_config::plugin_version)
 	{
 		result = AK_WrongBankVersion;
 	}
 	else
 	{
-		// $$from-petekug$$: I think you can just use local_params_block instead of this, but double check!
 		unsigned char* p_params_block = (unsigned char*)params_block;
 
 		//utility function that does a string copy from bank data to a char array
 		COPYBANKSTRING_CHAR(p_params_block, block_size, m_rtpc.file_name, AK_MAX_PATH);
-
 		//null terminate the strings
 		m_rtpc.file_name[AK_MAX_PATH - 1] = '\0';
-
 		//notifies all parts of the plugin that there's been an update to the parameters
 		m_param_change_handler.SetAllParamChanges();
 	}
@@ -92,10 +89,8 @@ AKRESULT render_in_place_fx_params::SetParam(AkPluginParamID in_paramID, const v
 	{
 		//data that has been sent by the tool and will be copied into the game data
 		memcpy(m_rtpc.file_name, (const char*)in_pValue, AK_MAX_PATH);
-
 		//null terminate string
 		m_rtpc.file_name[AK_MAX_PATH - 1] = '\0';
-
 		//notifies all parts of the plugin that there's been an update to the parameters
 		m_param_change_handler.SetParamChange(in_paramID);
 	}

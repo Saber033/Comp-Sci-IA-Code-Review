@@ -1,13 +1,13 @@
 #include <AK/SoundEngine/Common/IAkPlugin.h>
 #include <AK/Plugin/PluginServices/AkFXParameterChangeHandler.h>
 
-// $$from-petekug$$: this is the data that can be changed from the tool, just the file name to write the data to in this case
+//this is the data that can be changed from the tool, just the file name to write the data to in this case
 struct render_in_place_rtpc_params
 {
 	char file_name[AK_MAX_PATH];
 };
 
-// $$from-petekug$$: this is the id used to communicate which control was updated in the tool to your code
+//id used to communicate which control was updated in the tool to your code
 enum e_render_in_place_param_id
 {
 	authoring_file_name = 0,
@@ -41,9 +41,9 @@ struct render_in_place_fx_params
 
 	static const AkUInt32 k_number_of_parameters= 1;
 
-	// $$from-petekug$$: used to communicate changes captured from the tool to the render in place plugin classes
+	//used to communicate changes captured from the tool to the render in place plugin classes
 	AK::AkFXParameterChangeHandler<k_number_of_parameters> m_param_change_handler;
 
-	// $$from-petekug$$: "real time parameter controls" - values that can be adjusted and updated in the code without reloading the tool
+	//"real time parameter controls" - values that can be adjusted and updated in the code without reloading the tool
 	render_in_place_rtpc_params m_rtpc;
 };
