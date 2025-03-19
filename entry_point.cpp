@@ -30,7 +30,7 @@ int main(void)
 	return 0;
 }
 
-//helper function that is used to print the status of the test along with it's name
+//helper function that is used to print the status of the test along with its name
 static bool evaluate_test_result(bool succeeded, const char* test_case)
 {
 	if (succeeded)
@@ -105,13 +105,12 @@ static bool test_wave_loader()
 
 	audio_samples samples;
 
-	samples.load_samples("C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav");
-	samples.load_samples("C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav");
+	result &= evaluate_test_result(samples.load_samples("C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav"), "Testing if the file successfully loads");
 
 	const std::vector<const char*> files = {"C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav", "C:\\Users\\lemur\\Downloads\\file_example_WAV_1MG.wav"};
-	samples.load_samples(files);
+	result &= evaluate_test_result(samples.load_samples(files), "Testing if multiple wav files can be loaded");
 
-	samples.write_samples("C:\\Users\\lemur\\Downloads\\new_written_wav_file.wav");
+	result &= evaluate_test_result(samples.write_samples("C:\\Users\\lemur\\Downloads\\new_written_wav_file.wav"), "Testing if the stored wav data can be successfully written to a new wav file");
 
 	return result;
 }
