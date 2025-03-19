@@ -7,7 +7,7 @@ struct render_in_place_rtpc_params
 	char file_name[AK_MAX_PATH];
 };
 
-//id used to communicate which control was updated in the tool to your code
+//id used to communicate which control was updated in the tool to the code
 enum e_render_in_place_param_id
 {
 	authoring_file_name = 0,
