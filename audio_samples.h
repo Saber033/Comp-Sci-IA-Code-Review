@@ -12,7 +12,7 @@ public:
 	~audio_samples();
 
 	//loads the audio file, wav format, into a deserialized format
-	bool load_samples(const char* stream_file_path);
+	bool load_samples(const char* file_path);
 
 	//loads the audio files, wav format, into a combined deserialized format
 	bool load_samples(const std::vector<const char*>& file_paths);
