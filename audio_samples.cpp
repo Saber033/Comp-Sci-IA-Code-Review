@@ -161,15 +161,15 @@ bool audio_samples::load_samples(const char *stream_file_path)
 }
 
 //loads from multiple wav files
-bool audio_samples::load_samples(const std::vector<const char *>& stream_file_paths)
+bool audio_samples::load_samples(const std::vector<const char *>& file_paths)
 {
 	bool success = true;
 
 	//loops through all files
-	for (int i = 0; i < stream_file_paths.size(); i++)
+	for (int i = 0; i < file_paths.size(); i++)
 	{
 		//calls load samples on each file
-		success &= audio_samples::load_samples(stream_file_paths[i]);
+		success &= audio_samples::load_samples(file_paths[i]);
 	}
 
 	return success;
