@@ -105,7 +105,7 @@ bool audio_samples::load_samples(const char *file_path)
 						m_sample_count += sample_count;
 
 						//creates a buffer to hold the binary data from the wav file
-						//size is divided by 2 as a short is half the size of a float
+						//size is divided by 2 as a short is double the size of one byte
 						short* buffer = new short[data_chunk.chunk_size / 2];
 
 						//calculates a total chunk size that represents the size of everything in the file except for the header files
