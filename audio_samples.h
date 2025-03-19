@@ -21,7 +21,7 @@ public:
 	bool load_samples(const short* stream, unsigned int sample_count, unsigned int channel_count, unsigned int sample_rate);
 
 	//writes the deserialized format into an output wave file
-	bool write_samples(const char* stream_file_path);
+	bool write_samples(const char* file_path);
 
 	//returns a sample, given the index into the sample buffer
 	float get_sample(unsigned int sample_index) const;

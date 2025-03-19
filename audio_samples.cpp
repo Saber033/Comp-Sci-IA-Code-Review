@@ -238,11 +238,11 @@ bool audio_samples::load_samples(const short* stream, unsigned int sample_count,
 	return success;
 }
 
-bool audio_samples::write_samples(const char *stream_file_path)
+bool audio_samples::write_samples(const char *file_path)
 {
 	//wb writes into files in binary mode as wav files store binary data
 	//opens the file and sets a pointer to write inside it
-	FILE* write_ptr = fopen(stream_file_path, "wb");
+	FILE* write_ptr = fopen(file_path, "wb");
 	bool success = false;
 
 	//writes in the file
