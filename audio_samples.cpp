@@ -99,6 +99,7 @@ bool audio_samples::load_samples(const char *file_path)
 						unsigned int sample_count = data_chunk.chunk_size / ((m_bits_per_sample / 8) * m_channel_count);
 
 						//saving the size of the past data when multiple files are loaded
+						//this will be used to copy data from previous buffers to the new buffer
 						unsigned int current_sample_count = m_sample_count;
 
 						//increasing the size to account for the combined data
@@ -106,16 +107,19 @@ bool audio_samples::load_samples(const char *file_path)
 
 						//creates a buffer to hold the binary data from the wav file
 						//size is divided by 2 as a short is double the size of one byte
+						//shorts are used because they're part of the pcm file format
 						short* buffer = new short[data_chunk.chunk_size / 2];
 
 						//calculates a total chunk size that represents the size of everything in the file except for the header files
 						//if it's 0 then it's set to the riff header data size, but if not that it adds itself to the data chunk size
-						//if it's 0 then not combining multiple wav files yet
+						//also note if it's 0 then not combining multiple wav files yet
 						m_total_chunk_size = m_total_chunk_size == 0 ? riff_header.data_size : m_total_chunk_size + data_chunk.chunk_size;
 
 						//creates a new object that stores the samples in an array of floats
 						//size is determined by how many samples need to be stored multiplied by the channel count to account for multiple audio channels
 						float* new_samples = new float[m_sample_count * m_channel_count];
+
+						//stored as floats since that is the type used by Wwise
 						float* new_samples_working_buffer = new_samples;
 
 						//reads the data into the buffer
@@ -127,6 +131,7 @@ bool audio_samples::load_samples(const char *file_path)
 							//copies memory from m_samples to another samples buffer to hold past data when multiple files are loaded
 							//copies the memory for each channel
 							memcpy(new_samples_working_buffer, m_samples + current_sample_count * i, current_sample_count * sizeof(float));
+
 							//working buffer is incremented for the next memcpy for the next channel
 							new_samples_working_buffer += current_sample_count;
 
