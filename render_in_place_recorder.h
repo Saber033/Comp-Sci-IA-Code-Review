@@ -1,6 +1,6 @@
 #include "audio_samples.h"
 
-//utility class that accumulates audio samples and then writes them a wav file
+//utility class that accumulates audio samples and then writes them into a combined wav file
 class render_in_place_recorder
 {
 public:
