@@ -2,6 +2,7 @@
 #include <AK/SoundEngine/Common/AkSpeakerConfig.h>
 #include <AK/SoundEngine/Common/IAkPlugin.h>
 
+//constructor
 render_in_place_recorder::render_in_place_recorder() :
 	m_audio_samples(),
 	m_stream_file_path(nullptr),
