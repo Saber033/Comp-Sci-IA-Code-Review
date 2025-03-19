@@ -22,8 +22,7 @@ AK_IMPLEMENT_PLUGIN_FACTORY(render_in_place_fx, AkPluginTypeEffect, render_in_pl
 
 //constructor
 render_in_place_fx::render_in_place_fx()
-	: m_params(nullptr)
-	, m_working_buffer(nullptr)
+	: m_working_buffer(nullptr)
 	, m_recorder(nullptr)
 {
 }
@@ -37,12 +36,12 @@ render_in_place_fx::~render_in_place_fx()
 AKRESULT render_in_place_fx::Init(AK::IAkPluginMemAlloc* allocator, AK::IAkEffectPluginContext* context, AK::IAkPluginParam* params, AkAudioFormat& format)
 {
 	//initialize member variables
-	m_params = (render_in_place_fx_params*)params;
+	render_in_place_fx_params* parameters = (render_in_place_fx_params*)params;
 
 	m_recorder = static_cast<render_in_place_recorder*>(AK_PLUGIN_NEW(allocator, render_in_place_recorder()));
 
 	//initializes the recorder with the files and sample rate
-	m_recorder->initialize_stream(m_params->m_rtpc.file_name, format.uSampleRate);
+	m_recorder->initialize_stream(parameters->m_rtpc.file_name, format.uSampleRate);
 	
 	//initialize the working buffer
 	//set to be the largest possible size for a sample (up to 512 samples per call to Execute)

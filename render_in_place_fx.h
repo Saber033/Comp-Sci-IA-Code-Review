@@ -1,5 +1,6 @@
 #include "render_in_place_fx_params.h"
 
+//forward declaration to use the recorder
 class render_in_place_recorder;
 
 //see https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__plugins__effects.html
@@ -38,7 +39,6 @@ public:
 	AKRESULT TimeSkip(AkUInt32 frames) override;
 
 private:
-	render_in_place_fx_params* m_params;
 	AkInt16* m_working_buffer; //this buffer contains the data converted from the Wwise format to the format used to write the file
 	render_in_place_recorder* m_recorder; //the utility used for recording the data from Wwise, combining it and saving it to a new file
 };
