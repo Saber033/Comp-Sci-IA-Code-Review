@@ -2,10 +2,12 @@
 #include "render_in_place_config.h"
 #include "render_in_place_fx_factory.h"
 
+//constructor
 render_in_place_plugin::render_in_place_plugin()
 {
 }
 
+//destructor
 render_in_place_plugin::~render_in_place_plugin()
 {
 }
@@ -15,20 +17,21 @@ bool render_in_place_plugin::GetBankParameters(const GUID& platform_guid, AK::Ww
 {
 	//writes plugin version
 	data_writer.WriteUInt16(render_in_place_config::plugin_version);
+
 	//writes the string that is used for the filename when it is recorded
 	data_writer.WriteString(m_propertySet.GetString(platform_guid, "AuthoringFilename"));
 
 	return true;
 }
 
-DEFINE_AUDIOPLUGIN_CONTAINER(render_in_place); // Create a PluginContainer structure that contains the info for our plugin
-EXPORT_AUDIOPLUGIN_CONTAINER(render_in_place); // This is a DLL, we want to have a standardized name
-ADD_AUDIOPLUGIN_CLASS_TO_CONTAINER(            // Add our CLI class to the PluginContainer
-	render_in_place,                           // Name of the plug-in container for this shared library
-	render_in_place_plugin,                    // Authoring plug-in class to add to the plug-in container
-	render_in_place_fx                         // Corresponding Sound Engine plug-in class
+DEFINE_AUDIOPLUGIN_CONTAINER(render_in_place); //create a PluginContainer structure that contains the info for our plugin
+EXPORT_AUDIOPLUGIN_CONTAINER(render_in_place); //this is a DLL, we want to have a standardized name
+ADD_AUDIOPLUGIN_CLASS_TO_CONTAINER(            //add our CLI class to the PluginContainer
+	render_in_place,                           //name of the plug-in container for this shared library
+	render_in_place_plugin,                    //authoring plug-in class to add to the plug-in container
+	render_in_place_fx                         //corresponding Sound Engine plug-in class
 );
 DEFINE_PLUGIN_REGISTER_HOOK
 
-DEFINEDUMMYASSERTHOOK; // Placeholder assert hook for Wwise plug-ins using AKASSERT (cassert used by default)
+DEFINEDUMMYASSERTHOOK; //placeholder assert hook for Wwise plug-ins using AKASSERT
 
