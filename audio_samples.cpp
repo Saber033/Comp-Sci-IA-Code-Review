@@ -25,11 +25,11 @@ audio_samples::~audio_samples()
 }
 
 //loads wav data from a file on disk
-bool audio_samples::load_samples(const char *stream_file_path)
+bool audio_samples::load_samples(const char *file_path)
 {
 	//reads a file in binary mode ("rb") in order to extract the binary data from the file
 	//opening the file and creating a pointer to read through it
-	FILE* read_ptr = fopen(stream_file_path, "rb");
+	FILE* read_ptr = fopen(file_path, "rb");
 	bool success = false;
 
 	//read through the file
