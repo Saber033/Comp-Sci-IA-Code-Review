@@ -2,10 +2,12 @@
 #include "render_in_place_config.h"
 #include <AK/Tools/Common/AkBankReadHelpers.h>
 
+//constructor
 render_in_place_fx_params::render_in_place_fx_params()
 {
 }
 
+//destructor
 render_in_place_fx_params::~render_in_place_fx_params()
 {
 }
