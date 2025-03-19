@@ -40,6 +40,7 @@ AKRESULT render_in_place_fx::Init(AK::IAkPluginMemAlloc* allocator, AK::IAkEffec
 	m_params = (render_in_place_fx_params*)params;
 
 	m_recorder = static_cast<render_in_place_recorder*>(AK_PLUGIN_NEW(allocator, render_in_place_recorder()));
+
 	//initializes the recorder with the files and sample rate
 	m_recorder->initialize_stream(m_params->m_rtpc.file_name, format.uSampleRate);
 	
@@ -55,6 +56,7 @@ AKRESULT render_in_place_fx::Init(AK::IAkPluginMemAlloc* allocator, AK::IAkEffec
 AKRESULT render_in_place_fx::Term(AK::IAkPluginMemAlloc* allocator)
 {
 	AKRESULT result = AK_Success;
+
 	//writes the wav files to a new file
 	if (!m_recorder->write_to_disk())
 	{
